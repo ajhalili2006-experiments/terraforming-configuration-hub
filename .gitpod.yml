@@ -1,3 +1,4 @@
+
 image:
   file: .devenv/Dockerfile
 
@@ -6,3 +7,7 @@ tasks:
     before: |
       mkdir ~/.terraform.d
       cat .devenv/creds.tfrc_example.json | envsubst | tee ~/.terraform.d/credentials.tfrc.json >> /dev/null
+vscode:
+  extensions:
+    - hashicorp.terraform
+    - tfsec.tfsec
