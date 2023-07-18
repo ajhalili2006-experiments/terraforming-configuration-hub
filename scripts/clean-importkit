@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -xe
+
+echo "Cleaning in 5 seconds..."
+sleep 5
+rm -rv scripts/importkit/*.sh pending/*.tf
