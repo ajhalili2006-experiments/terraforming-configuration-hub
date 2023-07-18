@@ -5,4 +5,4 @@ tasks:
   - name: setup
     before: |
       mkdir ~/.terraform.d
-      cat .devenv/creds.tfrc_example.json | envsubst | tee ~/.terraform.d/credentials.tfrc.json
+      cat .devenv/creds.tfrc_example.json | envsubst | tee ~/.terraform.d/credentials.tfrc.json >> /dev/null
