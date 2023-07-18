@@ -8,9 +8,8 @@ variable "doteuorg_main" {
   type = string
   default = "959902c28719f0a18db9d387fd057c0d"
 }
-
-variable "tf_cloud_org" {
-  description = "The organization name you use for state management in Terraform Cloud."
+variable "doteuorg_uk" {
+  description = "Your legacy uk.eu.org (or <COUNTRY_CODE>.eu.org)"
   type = string
-  default = "ajhalili2006"
+  default = "9944962a9432216ff4893ce57f704c49"
 }

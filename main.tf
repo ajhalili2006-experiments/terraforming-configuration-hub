@@ -9,6 +9,9 @@ terraform {
 
 module "cf-configs" {
   source = "./cloudflare"
+
+  # config vars
   cf_account_id = var.cf_account_id
-  doteuorg_main = var.doteuorg_main # andreijiroh.eu.org
+  doteuorg_main = var.doteuorg_main
+  doteuorg_uk = var.doteuorg_uk
 }
