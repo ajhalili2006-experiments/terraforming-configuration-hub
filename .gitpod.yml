@@ -6,7 +6,9 @@ tasks:
   - name: setup
     before: |
       mkdir ~/.terraform.d
-      cat .devenv/creds.tfrc_example.json | envsubst | tee ~/.terraform.d/credentials.tfrc.json >> /dev/null
+      if [[ $TF_CREDENTIALS_FILE_BASE64 != "" ]]; then
+        echo $TF_CREDENTIALS_FILE_BASE64 | base64 -d | tee ~/.terraform.d/credentials.tfrc.json >> /dev/null
+      fi
 vscode:
   extensions:
     - hashicorp.terraform
