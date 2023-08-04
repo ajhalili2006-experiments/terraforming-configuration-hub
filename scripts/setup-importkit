@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
-set -xe
+set -o pipefail -e
+
+if [[ $DEBUG != "" ]]; then
+  set -x
+fi
 
 CLOUDFLARE_EMAIL=${CLOUDFLARE_EMAIL:-"ajhalili2006@gmail.com"}
 ACCOUNT_ID="cf0bd808c6a294fd8c4d8f6d2cdeca05"
@@ -7,18 +11,20 @@ DOTEUORG_MAIN="959902c28719f0a18db9d387fd057c0d"
 DOTEUORG_UK="9944962a9432216ff4893ce57f704c49"
 ROOTDIR=$(git rev-parse --show-toplevel)
 
-if [[ ${CLOUDFLARE_GLOBAL_API_TOKEN} == "" ]]; then
-  echo "error: Requires Global API key from https://dash.cloudflare.com/profile/api-tokens"
+if [[ ${CLOUDFLARE_API_TOKEN} == "" ]]; then
+  echo "error: Requires an scoped API token from https://dash.cloudflare.com/profile/api-tokens"
   exit 1
 fi
 
 echo "===> Generating Terraform files..."
-cf-terraforming generate --email "$CLOUDFLARE_EMAIL" --key "$CLOUDFLARE_GLOBAL_API_TOKEN" -z "$DOTEUORG_MAIN" --resource-type cloudflare_record | tee "$ROOTDIR/pending/cloudflare-andreijiroh.eu.org.tf" >> /dev/null
-cf-terraforming generate --email "$CLOUDFLARE_EMAIL" --key "$CLOUDFLARE_GLOBAL_API_TOKEN" -z "$DOTEUORG_UK" --resource-type cloudflare_record | tee "$ROOTDIR/pending/cloudflare-andreijiroh.uk.eu.org.tf" >> /dev/null
+# TODO: sed -E 's/"${SOMEVARHERE}"/var.doteuorg_uk/gm;t'
+cf-terraforming generate --token "$CLOUDFLARE_API_TOKEN" -z "$DOTEUORG_MAIN" --resource-type cloudflare_record | tee "$ROOTDIR/pending/cloudflare-andreijiroh.eu.org.tf" >> /dev/null
+cf-terraforming generate --token "$CLOUDFLARE_API_TOKEN" -z "$DOTEUORG_UK" --resource-type cloudflare_record | tee "$ROOTDIR/pending/cloudflare-andreijiroh.uk.eu.org.tf" >> /dev/null
 
 echo "===> Generating state import scripts..."
-cf-terraforming import -email "$CLOUDFLARE_EMAIL" --key "$CLOUDFLARE_GLOBAL_API_TOKEN" -z "$DOTEUORG_MAIN" --resource-type cloudflare_record | tee "$ROOTDIR/scripts/importkit/cf_dns_andreijiroh.eu.org.sh" >> /dev/null
-cf-terraforming import --email "$CLOUDFLARE_EMAIL" --key "$CLOUDFLARE_GLOBAL_API_TOKEN" -z "$DOTEUORG_UK" --resource-type cloudflare_record | tee "$ROOTDIR/scripts/importkit/cf_dns_andreijiroh.uk.eu.org.sh" >> /dev/null
+# TODO: sed -E whatever-the-grep-here
+cf-terraforming import -email "$CLOUDFLARE_EMAIL" --key "$CLOUDFLARE_API_TOKEN" -z "$DOTEUORG_MAIN" --resource-type cloudflare_record | tee "$ROOTDIR/scripts/importkit/cf_dns_andreijiroh.eu.org.sh" >> /dev/null
+cf-terraforming import --email "$CLOUDFLARE_EMAIL" --key "$CLOUDFLARE_API_TOKEN" -z "$DOTEUORG_UK" --resource-type cloudflare_record | tee "$ROOTDIR/scripts/importkit/cf_dns_andreijiroh.uk.eu.org.sh" >> /dev/null
 
 echo "info: Run the following commands to import state from different providers to"
 echo "info: your Terraform state."
