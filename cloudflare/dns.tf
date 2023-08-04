@@ -290,11 +290,11 @@ resource "cloudflare_record" "terraform_managed_resource_0140101838c1a826c5ba05d
 }
 
 resource "cloudflare_record" "terraform_managed_resource_0bca95b28dac8aa590ffc660c7a8ea0b" {
-  name    = "_github-challenge-ajhalili2006-expe-org.experiments"
+  name    = "_github-pages-challenge-ajhalili2006-experiments.experiments"
   proxied = false
   ttl     = 1
   type    = "TXT"
-  value   = "52fc69f240"
+  value   = "28391ca81b849905203c9c3b2e3995"
   zone_id = var.doteuorg_main
 }
 
@@ -361,11 +361,13 @@ resource "cloudflare_record" "terraform_managed_resource_a85c3b8646c67a844c53c20
 }
 
 resource "cloudflare_record" "resend_noreply" {
-  name    = "bounces.noreply"
-  type    = "MX"
-  value   = "feedback-smtp.us-east-1.amazonses.com"
-  ttl     = 3600
-  zone_id = var.doteuorg_main
+  name     = "bounces.noreply"
+  proxied  = false 
+  type     = "MX"
+  value    = "feedback-smtp.us-east-1.amazonses.com"
+  ttl      = 3600
+  priority = 10
+  zone_id  = var.doteuorg_main
 }
 
 resource "cloudflare_record" "resend_noreply_spf" {
