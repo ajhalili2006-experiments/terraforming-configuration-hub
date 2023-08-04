@@ -1,4 +1,17 @@
 ### DNS records for andreijiroh.eu.org ###
+
+## kutt.it custom domain ##
+resource "cloudflare_record" "terraform_managed_resource_8ea968708442dd0a28b2ae3b10319eea" {
+  comment = "kutt.it custom domain for setup"
+  name    = "contextbot"
+  proxied = true
+  ttl     = 1
+  type    = "A"
+  value   = "192.64.116.170"
+  zone_id = var.doteuorg_main
+}
+
+## temporary redirect until things are ironed out ##
 resource "cloudflare_record" "terraform_managed_resource_7b3609f306303d866a163e6509f6a6b1" {
   comment = "TODO: Temporary redirect to old wiki domain"
   name    = "wiki"
@@ -9,6 +22,7 @@ resource "cloudflare_record" "terraform_managed_resource_7b3609f306303d866a163e6
   zone_id = var.doteuorg_main
 }
 
+## GSC verification record ##
 resource "cloudflare_record" "terraform_managed_resource_998a1321d3eba9c2b2dd164df87c5b43" {
   comment = "Google Search Console verification"
   name    = "4fpjcvxb72m2"
@@ -19,6 +33,7 @@ resource "cloudflare_record" "terraform_managed_resource_998a1321d3eba9c2b2dd164
   zone_id = var.doteuorg_main
 }
 
+## homepage ##
 resource "cloudflare_record" "terraform_managed_resource_98c19a9f058f8a70c9471f413d83f9f6" {
   name    = "andreijiroh.eu.org"
   proxied = true
@@ -28,6 +43,7 @@ resource "cloudflare_record" "terraform_managed_resource_98c19a9f058f8a70c9471f4
   zone_id = var.doteuorg_main
 }
 
+## blog ##
 resource "cloudflare_record" "terraform_managed_resource_718a7dfda2528bd4d01b4f8ca4922ec2" {
   name    = "blog"
   proxied = false
@@ -37,6 +53,7 @@ resource "cloudflare_record" "terraform_managed_resource_718a7dfda2528bd4d01b4f8
   zone_id = var.doteuorg_main
 }
 
+## tumblr - fromthebshq ##
 resource "cloudflare_record" "terraform_managed_resource_65882e060bd8a8719aad3e7b576228b2" {
   name    = "fromthebshq"
   proxied = false
@@ -46,6 +63,7 @@ resource "cloudflare_record" "terraform_managed_resource_65882e060bd8a8719aad3e7
   zone_id = var.doteuorg_main
 }
 
+## gemini site via srht.site ##
 resource "cloudflare_record" "terraform_managed_resource_2a94d5da8da9bab6c0241a2885ac9a27" {
   name    = "gemini"
   proxied = false
@@ -55,6 +73,7 @@ resource "cloudflare_record" "terraform_managed_resource_2a94d5da8da9bab6c0241a2
   zone_id = var.doteuorg_main
 }
 
+## github.io ##
 resource "cloudflare_record" "terraform_managed_resource_e01b4da22ce0d9d4a5e50b0d98ceebe2" {
   name    = "hub"
   proxied = false
@@ -64,6 +83,7 @@ resource "cloudflare_record" "terraform_managed_resource_e01b4da22ce0d9d4a5e50b0
   zone_id = var.doteuorg_main
 }
 
+## gitlab pages ##
 resource "cloudflare_record" "terraform_managed_resource_74b82035ed339445327e3537361ec877" {
   name    = "lab"
   proxied = true
@@ -73,6 +93,7 @@ resource "cloudflare_record" "terraform_managed_resource_74b82035ed339445327e353
   zone_id = var.doteuorg_main
 }
 
+## possibly unused MS 365 bullshit ##
 resource "cloudflare_record" "terraform_managed_resource_4b5718c981ad48257d8345ebee6fd7ca" {
   name    = "lyncdiscover.andreijiroh"
   proxied = false
@@ -82,6 +103,7 @@ resource "cloudflare_record" "terraform_managed_resource_4b5718c981ad48257d8345e
   zone_id = var.doteuorg_main
 }
 
+## tumblr - multifandom-hellspaces ##
 resource "cloudflare_record" "terraform_managed_resource_c6ec7a5fc9ac43cc196b49deaf0c8545" {
   name    = "multifandom"
   proxied = false
@@ -91,6 +113,7 @@ resource "cloudflare_record" "terraform_managed_resource_c6ec7a5fc9ac43cc196b49d
   zone_id = var.doteuorg_main
 }
 
+## polywork/@ajhalili2006 ##
 resource "cloudflare_record" "terraform_managed_resource_f455b13a8a2f3a578cf56fea263f0849" {
   name    = "portfolio"
   proxied = false
@@ -100,6 +123,7 @@ resource "cloudflare_record" "terraform_managed_resource_f455b13a8a2f3a578cf56fe
   zone_id = var.doteuorg_main
 }
 
+## old iCloud Custom Email records ##
 resource "cloudflare_record" "terraform_managed_resource_2f7305320c0e52fd6ee677f68554dcfc" {
   name    = "sig1._domainkey"
   proxied = false
@@ -109,6 +133,7 @@ resource "cloudflare_record" "terraform_managed_resource_2f7305320c0e52fd6ee677f
   zone_id = var.doteuorg_main
 }
 
+## possibly unused MS 365 bullshit ##
 resource "cloudflare_record" "terraform_managed_resource_de0193ccc4a97a743d38f3ac7b267a78" {
   name    = "sip.andreijiroh"
   proxied = false
@@ -118,6 +143,7 @@ resource "cloudflare_record" "terraform_managed_resource_de0193ccc4a97a743d38f3a
   zone_id = var.doteuorg_main
 }
 
+## email ##
 resource "cloudflare_record" "terraform_managed_resource_7918bf8a7b823e56b3e03231264a2585" {
   name     = "andreijiroh.eu.org"
   priority = 10
@@ -128,6 +154,7 @@ resource "cloudflare_record" "terraform_managed_resource_7918bf8a7b823e56b3e0323
   zone_id  = var.doteuorg_main
 }
 
+## email - deprecated ##
 resource "cloudflare_record" "terraform_managed_resource_74f91b6eacd6757c82aec77567a22690" {
   name     = "fwdserv"
   priority = 10
@@ -138,6 +165,7 @@ resource "cloudflare_record" "terraform_managed_resource_74f91b6eacd6757c82aec77
   zone_id  = var.doteuorg_main
 }
 
+## possibly unused MS 365 bullshit ##
 resource "cloudflare_record" "terraform_managed_resource_ff36e3c4fbb34c28190f12380906c045" {
   name     = "_sipfederationtls._tcp"
   priority = 100
@@ -156,6 +184,7 @@ resource "cloudflare_record" "terraform_managed_resource_ff36e3c4fbb34c28190f123
   }
 }
 
+## possibly unused MS 365 bullshit ##
 resource "cloudflare_record" "terraform_managed_resource_e8086a2124d918303c153995b5cba40b" {
   name     = "_sip._tls"
   priority = 100
@@ -184,6 +213,7 @@ resource "cloudflare_record" "terraform_managed_resource_6c7ee07c3561850deda8df8
   zone_id = var.doteuorg_main
 }
 
+## keybase proofs ##
 resource "cloudflare_record" "terraform_managed_resource_3fd98d25934ee9ac6e112218cad19f35" {
   comment = "keybase:ajhalilidev06"
   name    = "andreijiroh.eu.org"
@@ -193,7 +223,6 @@ resource "cloudflare_record" "terraform_managed_resource_3fd98d25934ee9ac6e11221
   value   = "keybase-site-verification=RXJGiPvJA4AlNNrBs6S7UAFW1rId8AiqSeXjsiHG6kQ"
   zone_id = var.doteuorg_main
 }
-
 resource "cloudflare_record" "terraform_managed_resource_d894ccdb9cab6505e3e51c3b07576810" {
   comment = "keybase"
   name    = "andreijiroh.eu.org"
@@ -204,6 +233,7 @@ resource "cloudflare_record" "terraform_managed_resource_d894ccdb9cab6505e3e51c3
   zone_id = var.doteuorg_main
 }
 
+## mail ##
 resource "cloudflare_record" "terraform_managed_resource_d8fd08fb7647f939005dd20be4b7ad9e" {
   name    = "andreijiroh.eu.org"
   proxied = false
@@ -219,24 +249,6 @@ resource "cloudflare_record" "terraform_managed_resource_25eb5218b240490233ea07f
   ttl     = 1
   type    = "TXT"
   value   = "pinterest-site-verification=9b48426d39ceb8aad9849c52c6605244"
-  zone_id = var.doteuorg_main
-}
-
-resource "cloudflare_record" "terraform_managed_resource_5a788a22255bd4346ef5c442b9dd480e" {
-  name    = "andreijiroh.eu.org"
-  proxied = false
-  ttl     = 3600
-  type    = "TXT"
-  value   = "apple-domain=2FlT9G5O0zStphER"
-  zone_id = var.doteuorg_main
-}
-
-resource "cloudflare_record" "terraform_managed_resource_90643b4c3a893f149ae93987f94f1180" {
-  name    = "andreijiroh.eu.org"
-  proxied = false
-  ttl     = 3600
-  type    = "TXT"
-  value   = "apple-domain=1ZNLKNyamwbSz5Qg"
   zone_id = var.doteuorg_main
 }
 
@@ -313,6 +325,7 @@ resource "cloudflare_record" "terraform_managed_resource_50b55f8bc431e51c05e7fb2
   zone_id = var.doteuorg_main
 }
 
+## security contacts ##
 resource "cloudflare_record" "terraform_managed_resource_e98c11ead6587bb96175000d363f8771" {
   name    = "_security"
   proxied = false
@@ -321,7 +334,6 @@ resource "cloudflare_record" "terraform_managed_resource_e98c11ead6587bb96175000
   value   = "security_policy=https://andreijiroh.eu.org/security"
   zone_id = var.doteuorg_main
 }
-
 resource "cloudflare_record" "terraform_managed_resource_1ac1009cda32f9c5c3db231a2f1bfb02" {
   name    = "_security"
   proxied = false
@@ -330,7 +342,6 @@ resource "cloudflare_record" "terraform_managed_resource_1ac1009cda32f9c5c3db231
   value   = "security_contact=https://andreijiroh.eu.org/secuirty/report"
   zone_id = var.doteuorg_main
 }
-
 resource "cloudflare_record" "terraform_managed_resource_50d3d2967edd41699fdf91d032659613" {
   name    = "_security"
   proxied = false
@@ -346,6 +357,30 @@ resource "cloudflare_record" "terraform_managed_resource_a85c3b8646c67a844c53c20
   ttl     = 1
   type    = "AAAA"
   value   = "100::"
+  zone_id = var.doteuorg_main
+}
+
+resource "cloudflare_record" "resend_noreply" {
+  name    = "bounces.noreply"
+  type    = "MX"
+  value   = "feedback-smtp.us-east-1.amazonses.com"
+  ttl     = 3600
+  zone_id = var.doteuorg_main
+}
+
+resource "cloudflare_record" "resend_noreply_spf" {
+  name    = "bounces.noreply"
+  type    = "TXT"
+  value   = "v=spf1 include:amazonses.com ~all"
+  ttl     = 3600
+  zone_id = var.doteuorg_main
+}
+
+resource "cloudflare_record" "resend_noreply_dkim" {
+  name    = "resend._domainkey.noreply"
+  type    = "TXT"
+  value   = "p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDH/l/8eer6XKaE5eimxiOq7KAtQFIII7HCtnxTi8P7Wum+tQTW4yLdPVAJzPndK01myXl6kkG/Th/Sed+jmoJrhSFHBfOELD1gJTvQ09j43yxN7tBdgeX7flbo5UFs5IFxQcfweMK0/SYDAiMa2RZKtxUOU//9CclSH6lSP6W3owIDAQAB"
+  ttl     = 3600
   zone_id = var.doteuorg_main
 }
 
